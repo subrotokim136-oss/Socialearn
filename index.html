@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialEarn - Earn by Social Tasks</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #00ff88; --bg: #0a0a0a; --card: #1a1a1a; --text: #ffffff; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding-bottom: 70px; }
+        .header { padding: 20px; text-align: center; background: var(--card); border-bottom: 2px solid var(--primary); }
+        .balance-card { background: linear-gradient(45deg, #111, #222); margin: 20px; padding: 30px; border-radius: 15px; border: 1px solid var(--primary); text-align: center; }
+        .balance-amount { font-size: 32px; font-weight: bold; color: var(--primary); }
+        .task-container { padding: 15px; }
+        .task-card { background: var(--card); margin-bottom: 15px; padding: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--primary); }
+        .btn { background: var(--primary); color: #000; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; text-decoration: none; }
+        .navbar { position: fixed; bottom: 0; width: 100%; background: var(--card); display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #333; }
+        .nav-item { color: #888; text-decoration: none; font-size: 20px; }
+        .nav-item.active { color: var(--primary); }
+        #withdraw-section { display: none; padding: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h2><i class="fab fa-instagram"></i> SocialEarn</h2>
+</div>
+
+<div id="home-section">
+    <div class="balance-card">
+        <p>Your Balance</p>
+        <div class="balance-amount">₹ <span id="balance">1200</span></div>
+        <p><i class="fas fa-users"></i> 1K Followers</p>
+    </div>
+
+    <div class="task-container">
+        <h3>Daily Tasks</h3>
+        <div class="task-card">
+            <div><strong>Watch & Like Reel</strong><br><small>Earn ₹10</small></div>
+            <a href="YOUR_ADSTERRA_DIRECT_LINK_HERE" target="_blank" class="btn" onclick="addMoney(10)">Start</a>
+        </div>
+        <div class="task-card">
+            <div><strong>Follow on Instagram</strong><br><small>Earn ₹15</small></div>
+            <a href="YOUR_ADSTERRA_DIRECT_LINK_HERE" target="_blank" class="btn" onclick="addMoney(15)">Start</a>
+        </div>
+    </div>
+</div>
+
+<div id="withdraw-section">
+    <h3>Withdraw Earnings</h3>
+    <div class="balance-card">
+        <p>Minimum Withdrawal: ₹2000</p>
+        <input type="text" placeholder="Enter UPI ID (Indian)" style="width:90%; padding:10px; margin-bottom:10px; border-radius:5px;">
+        <input type="email" placeholder="Enter PayPal Email (Global)" style="width:90%; padding:10px; margin-bottom:10px; border-radius:5px;">
+        <button class="btn" onclick="alert('Request Sent! Admin will verify in 24 hours.')">Submit Request</button>
+    </div>
+</div>
+
+<div class="navbar">
+    <a href="#" class="nav-item active" onclick="showSection('home')"><i class="fas fa-home"></i></a>
+    <a href="#" class="nav-item" onclick="showSection('withdraw')"><i class="fas fa-wallet"></i></a>
+    <a href="YOUR_ADSTERRA_DIRECT_LINK_HERE" target="_blank" class="nav-item"><i class="fas fa-gift"></i></a>
+</div>
+
+<script>
+    let balance = 1200;
+    function addMoney(amount) {
+        balance += amount;
+        document.getElementById('balance').innerText = balance;
+    }
+
+    function showSection(section) {
+        if(section === 'home') {
+            document.getElementById('home-section').style.display = 'block';
+            document.getElementById('withdraw-section').style.display = 'none';
+        } else {
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('withdraw-section').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
